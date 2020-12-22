@@ -16,6 +16,17 @@ LocalPlayerSection:addSlider("JumpPower", game:GetService("Players").LocalPlayer
         game:GetService("Players").LocalPlayer.Character.Humanoid.JumpPower = Value
     end
 end)
+local flyjump
+LocalPlayerSection:addToggle("Fly Jump", false, function(Value)
+    if Value == true then
+	if flyjump then flyjump:Disconnect() end
+	flyjump = game:GetService("UserInputService").JumpRequest:Connect(function(Jump)
+		game:GetService"Players".LocalPlayer.Character:FindFirstChildOfClass'Humanoid':ChangeState("Jumping")
+    end)
+else
+    if flyjump then flyjump:Disconnect() end
+end
+end)
 
 local TeleportSection = LocalPlayerPage:addSection("Teleport") -- TeleportSection
 
