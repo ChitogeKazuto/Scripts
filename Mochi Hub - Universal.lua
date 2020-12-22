@@ -1,5 +1,5 @@
 -- Mochi Hub - Universal
-local MochiLibrary = loadstring(game:HttpGet("https://raw.githubusercontent.com/GreenDeno/Venyx-UI-Library/main/source.lua"))()
+local MochiLibrary = loadstring(game:HttpGet("https://raw.githubusercontent.com/ChitogeKazuto/Scripts/main/Ui%20Venyx.lua"))()
 local Mochi = MochiLibrary.new("Mochi Hub - Universal", 0)
 
 -- LocalPlayerPage
