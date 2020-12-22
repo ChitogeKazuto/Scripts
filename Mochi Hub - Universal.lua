@@ -62,6 +62,13 @@ AdminScriptsSection:addButton("Reviz", function()
     loadstring(game:HttpGet(('https://pastebin.com/raw/ibFPdiF7'),true))()
 end)
 
+-- Misc
+local MiscPage = Mochi:addPage("Misc", 3944704135)
+local ZoomSection = MiscPage:addSection("Zoom") -- ZoomSection
+ZoomSection:addSlider("Zoom", game:GetService("Players").LocalPlayer.CameraMaxZoomDistance, 0, 10000, function(Value)
+    game:GetService("Players").LocalPlayer.CameraMaxZoomDistance = Value
+end)
+
 -- Settings
 local SettingsPage = Mochi:addPage("Settings", 4483345737)
 local GUISection = SettingsPage:addSection("GUI") -- GUISection
