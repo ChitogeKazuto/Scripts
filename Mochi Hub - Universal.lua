@@ -52,6 +52,14 @@ local Mouse = Plr:GetMouse()
         end)
 end)
 
+UniversalScriptsSection:addButton("FullBright", function()
+	game:GetService("Lighting").Brightness = 2
+	game:GetService("Lighting").ClockTime = 14
+	game:GetService("Lighting").FogEnd = 100000
+	game:GetService("Lighting").GlobalShadows = false
+	game:GetService("Lighting").OutdoorAmbient = Color3.fromRGB(128, 128, 128)
+end)
+
 local AdminScriptsSection = ScriptsPage:addSection("Admin Scripts") -- UniversalScriptsSection
 
 AdminScriptsSection:addButton("Infinite Yield", function()
