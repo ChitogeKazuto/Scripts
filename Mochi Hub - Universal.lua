@@ -77,6 +77,10 @@ ZoomSection:addSlider("Zoom", game:GetService("Players").LocalPlayer.CameraMaxZo
     game:GetService("Players").LocalPlayer.CameraMaxZoomDistance = Value
 end)
 
+local PlayerInfoSection = MiscPage:addSection("Player Info") -- PlayerInfoSection
+PlayerInfoSection:addButton("Player Name : "..game:GetService("Players").LocalPlayer.Name, function()end)
+PlayerInfoSection:addButton("Player ID : "..game:GetService("Players").LocalPlayer.UserId, function()end)
+
 -- Settings
 local SettingsPage = Mochi:addPage("Settings", 4483345737)
 local GUISection = SettingsPage:addSection("GUI") -- GUISection
