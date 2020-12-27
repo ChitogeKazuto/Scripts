@@ -1,0 +1,112 @@
+-- Mochi Hub - VoxlBlade
+local MochiLibrary = loadstring(game:HttpGet("https://raw.githubusercontent.com/ChitogeKazuto/Scripts/main/Ui%20Venyx.lua"))()
+local Mochi = MochiLibrary.new("Mochi Hub - VoxlBlade", 0)
+
+-- LocalPlayerPage
+local LocalPlayerPage = Mochi:addPage("LocalPlayer", 4384401919)
+local LocalPlayerSection = LocalPlayerPage:addSection("LocalPlayer") -- LocalPlayerSection
+
+LocalPlayerSection:addTextbox("WalkSpeed", 16, function(Value)
+    local Speed = Value
+    local oldmt = getrawmetatable(game)
+    local oldnc = oldmt.__namecall
+    local oldidx = oldmt.__index
+    setreadonly(oldmt,false)
+    local uis = game:GetService("UserInputService")
+    oldmt.__index = function(...)
+       if ({...})[2] == 'Kick' then
+           return function() while wait() do end end
+       end
+       if ({...})[2] == 'WalkSpeed' then
+           return (uis:IsKeyDown(Enum.KeyCode.LeftShift) and Speed) or 16
+       end
+       return oldidx(...)
+    end
+    oldmt.__namecall = function(...)
+      if getnamecallmethod() == 'Kick' then
+           return function() while wait() do end end
+           end
+       return oldnc(...)
+    end
+end)
+local flyjump
+LocalPlayerSection:addToggle("Fly Jump", false, function(Value)
+    if Value == true then
+	if flyjump then flyjump:Disconnect() end
+	flyjump = game:GetService("UserInputService").JumpRequest:Connect(function(Jump)
+		game:GetService"Players".LocalPlayer.Character:FindFirstChildOfClass'Humanoid':ChangeState("Jumping")
+    end)
+else
+    if flyjump then flyjump:Disconnect() end
+end
+end)
+
+-- VB - Misc
+local VBMiscPage = Mochi:addPage("VB - Misc", 4483362458)
+local VBMiscSection = VBMiscPage:addSection("Misc")
+
+VBMiscSection:addToggle("Auto Attack", false, function(Value)
+_G.AutoAttack = Value
+    while _G.AutoAttack do wait()
+        local A_1 = "LL"
+        local Event = game:GetService("ReplicatedStorage").Events.Event1
+        Event:InvokeServer(A_1)
+    end
+end)
+
+-- Scripts
+local ScriptsPage = Mochi:addPage("Scripts", 4370341699)
+local UniversalScriptsSection = ScriptsPage:addSection("Universal Scripts") -- UniversalScriptsSection
+
+UniversalScriptsSection:addButton("Ctrl+Click TP", function()
+local Plr = game:GetService("Players").LocalPlayer
+local Mouse = Plr:GetMouse() 
+    Mouse.Button1Down:connect(function()
+        if not game:GetService("UserInputService"):IsKeyDown(Enum.KeyCode.LeftControl) then return end
+            if not Mouse.Target then return end
+        Plr.Character:MoveTo(Mouse.Hit.p)
+        end)
+end)
+
+UniversalScriptsSection:addButton("FullBright", function()
+	game:GetService("Lighting").Brightness = 2
+	game:GetService("Lighting").ClockTime = 14
+	game:GetService("Lighting").FogEnd = 100000
+	game:GetService("Lighting").GlobalShadows = false
+	game:GetService("Lighting").OutdoorAmbient = Color3.fromRGB(128, 128, 128)
+end)
+
+local AdminScriptsSection = ScriptsPage:addSection("Admin Scripts") -- UniversalScriptsSection
+
+AdminScriptsSection:addButton("Infinite Yield", function()
+    loadstring(game:HttpGet(('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'),true))()
+end)
+
+AdminScriptsSection:addButton("Reviz", function()
+    loadstring(game:HttpGet(('https://pastebin.com/raw/ibFPdiF7'),true))()
+end)
+
+-- Misc
+local MiscPage = Mochi:addPage("Misc", 3944704135)
+local ZoomSection = MiscPage:addSection("Zoom") -- ZoomSection
+ZoomSection:addSlider("Zoom", game:GetService("Players").LocalPlayer.CameraMaxZoomDistance, 0, 10000, function(Value)
+    game:GetService("Players").LocalPlayer.CameraMaxZoomDistance = Value
+end)
+
+local PlayerInfoSection = MiscPage:addSection("Player Info") -- PlayerInfoSection
+PlayerInfoSection:addButton("Player Name : "..game:GetService("Players").LocalPlayer.Name, function()end)
+PlayerInfoSection:addButton("Player ID : "..game:GetService("Players").LocalPlayer.UserId, function()end)
+
+-- Settings
+local SettingsPage = Mochi:addPage("Settings", 4483345737)
+local GUISection = SettingsPage:addSection("GUI") -- GUISection
+
+GUISection:addKeybind("Toggle Keybind", Enum.KeyCode.RightControl, function()
+    Mochi:toggle()
+end)
+
+GUISection:addButton("Destroy Gui", function()
+    game:GetService("CoreGui")["Mochi Hub - Universal"]:Destroy()
+end)
+
+Mochi:SelectPage(Mochi.pages[1], true)
