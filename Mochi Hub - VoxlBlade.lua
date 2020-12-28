@@ -3,7 +3,7 @@ local MochiLibrary = loadstring(game:HttpGet("https://raw.githubusercontent.com/
 local Mochi = MochiLibrary.new("Mochi Hub - VoxlBlade", 0)
 
 -- LocalPlayerPage
-local LocalPlayerPage = Mochi:addPage("VB - LocalPlayer", 4384401919)
+local LocalPlayerPage = Mochi:addPage("VB - LP", 4384401919)
 local LocalPlayerSection = LocalPlayerPage:addSection("LocalPlayer") -- LocalPlayerSection
 
 LocalPlayerSection:addTextbox("WalkSpeed", 16, function(Value)
