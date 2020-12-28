@@ -41,6 +41,20 @@ else
 end
 end)
 
+LocalPlayerSection:addToggle("No Clip", false, function(Value)
+    noclip = true 
+    game:GetService('RunService').Stepped:connect(function()
+        if noclip then
+    game.Players.LocalPlayer.Character.Humanoid:ChangeState(11)
+        end
+        end)
+    if Value == true then
+        noclip = true
+    else
+        noclip = false 
+    end
+    end)
+
 -- VB - Misc
 local VBMiscPage = Mochi:addPage("VB - Misc", 4483362458)
 local VBMiscSection = VBMiscPage:addSection("Misc")
