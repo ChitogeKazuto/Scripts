@@ -28,6 +28,20 @@ else
 end
 end)
 
+LocalPlayerSection:addToggle("No Clip", false, function(Value)
+noclip = true 
+game:GetService('RunService').Stepped:connect(function()
+    if noclip then
+game.Players.LocalPlayer.Character.Humanoid:ChangeState(11)
+    end
+    end)
+if Value == true then
+    noclip = true
+else
+    noclip = false 
+end
+end)
+
 local TeleportSection = LocalPlayerPage:addSection("Teleport") -- TeleportSection
 
 local TPLAYER = {}
@@ -93,4 +107,4 @@ GUISection:addButton("Destroy Gui", function()
     game:GetService("CoreGui")["Mochi Hub - Universal"]:Destroy()
 end)
 
-Mochi:SelectPage(Mochi.pages[1], true)
+Mochi:SelectPage(Mochi.pages[4], true)
