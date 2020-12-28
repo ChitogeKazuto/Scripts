@@ -106,7 +106,7 @@ GUISection:addKeybind("Toggle Keybind", Enum.KeyCode.RightControl, function()
 end)
 
 GUISection:addButton("Destroy Gui", function()
-    game:GetService("CoreGui")["Mochi Hub - Universal"]:Destroy()
+    game:GetService("CoreGui")["Mochi Hub - VoxlBlade"]:Destroy()
 end)
 
 Mochi:SelectPage(Mochi.pages[1], true)
