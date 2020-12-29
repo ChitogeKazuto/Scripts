@@ -55,19 +55,6 @@ LocalPlayerSection:addToggle("No Clip", false, function(Value)
     end
     end)
 
--- VB - Misc
-local VBMiscPage = Mochi:addPage("VB - Misc", 4483362458)
-local VBMiscSection = VBMiscPage:addSection("Misc")
-
-VBMiscSection:addToggle("Auto Attack", false, function(Value)
-_G.AutoAttack = Value
-    while _G.AutoAttack do wait()
-        local A_1 = "LL"
-        local Event = game:GetService("ReplicatedStorage").Events.Event1
-        Event:InvokeServer(A_1)
-    end
-end)
-
 local TeleportSection = LocalPlayerPage:addSection("Teleport") -- TeleportSection
 
 local TPLAYER = {}
@@ -90,6 +77,19 @@ g.CFrame = game:GetService("Players")[Value].Character.HumanoidRootPart.CFrame
 local Tween = TweenService:Create(HRP, info, g)
 Tween:Play()
 end
+end)
+
+-- VB - Misc
+local VBMiscPage = Mochi:addPage("VB - Misc", 4483362458)
+local VBMiscSection = VBMiscPage:addSection("Misc")
+
+VBMiscSection:addToggle("Auto Attack", false, function(Value)
+_G.AutoAttack = Value
+    while _G.AutoAttack do wait()
+        local A_1 = "LL"
+        local Event = game:GetService("ReplicatedStorage").Events.Event1
+        Event:InvokeServer(A_1)
+    end
 end)
 
 -- Scripts
