@@ -68,6 +68,30 @@ _G.AutoAttack = Value
     end
 end)
 
+local TeleportSection = LocalPlayerPage:addSection("Teleport") -- TeleportSection
+
+local TPLAYER = {}
+for i,v in pairs(game:GetService("Players"):GetChildren()) do
+        table.insert(TPLAYER, v.Name)
+    end
+TeleportSection:addDropdown("Method", {"Instant", "Tween"}, function(Value)
+       _G.TPInfo = Value
+end)
+TeleportSection:addDropdown("Teleport To Player", TPLAYER, function(Value)
+    if _G.TPInfo == "Instant" then
+        game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Players")[Value].Character.HumanoidRootPart.CFrame
+    else
+local TweenService = game:GetService("TweenService")
+local HRP = game:GetService("Players").LocalPlayer.Character.HumanoidRootPart
+local info = TweenInfo.new(5, Enum.EasingStyle.Linear)
+local g = {}
+g.CFrame = game:GetService("Players")[Value].Character.HumanoidRootPart.CFrame
+
+local Tween = TweenService:Create(HRP, info, g)
+Tween:Play()
+end
+end)
+
 -- Scripts
 local ScriptsPage = Mochi:addPage("Scripts", 4370341699)
 local UniversalScriptsSection = ScriptsPage:addSection("Universal Scripts") -- UniversalScriptsSection
