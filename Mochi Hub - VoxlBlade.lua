@@ -70,7 +70,7 @@ TeleportSection:addDropdown("Teleport To Player", TPLAYER, function(Value)
     else
 local TweenService = game:GetService("TweenService")
 local HRP = game:GetService("Players").LocalPlayer.Character.HumanoidRootPart
-local info = TweenInfo.new(5, Enum.EasingStyle.Linear)
+local info = TweenInfo.new(7, Enum.EasingStyle.Linear)
 local g = {}
 g.CFrame = game:GetService("Players")[Value].Character.HumanoidRootPart.CFrame
 
