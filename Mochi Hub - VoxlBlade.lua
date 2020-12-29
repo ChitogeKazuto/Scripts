@@ -72,7 +72,7 @@ local TweenService = game:GetService("TweenService")
 local HRP = game:GetService("Players").LocalPlayer.Character.HumanoidRootPart
 local info = TweenInfo.new(8, Enum.EasingStyle.Linear)
 local g = {}
-g.CFrame = game:GetService("Players")[Value].Character.HumanoidRootPart.CFrame
+g.CFrame = game:GetService("Players")[Value].Character.HumanoidRootPart.CFrame + Vector3.new(3,1,0)
 
 local Tween = TweenService:Create(HRP, info, g)
 Tween:Play()
