@@ -124,6 +124,10 @@ AdminScriptsSection:addButton("Infinite Yield", function()
     loadstring(game:HttpGet(('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'),true))()
 end)
 
+AdminScriptsSection:addButton("CMD X", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/CMD-X/CMD-X/master/Source", true))()
+end)
+
 AdminScriptsSection:addButton("Reviz", function()
     loadstring(game:HttpGet(('https://pastebin.com/raw/ibFPdiF7'),true))()
 end)
