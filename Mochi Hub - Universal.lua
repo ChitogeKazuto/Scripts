@@ -88,6 +88,10 @@ UniversalScriptsSection:addButton("FullBright", function()
 	game:GetService("Lighting").OutdoorAmbient = Color3.fromRGB(128, 128, 128)
 end)
 
+UniversalScriptsSection:addButton("No Fog", function()
+    game:GetService("Lighting").FogEnd = 100000
+end)
+
 local AdminScriptsSection = ScriptsPage:addSection("Admin Scripts") -- UniversalScriptsSection
 
 AdminScriptsSection:addButton("Infinite Yield", function()
