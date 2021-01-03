@@ -1,3 +1,13 @@
+-- Anti Cheat
+local mt = getrawmetatable(game)
+local old = mt.__namecall 
+setreadonly(mt, false)
+mt.__namecall = newcclosure(function(self, ...)
+    return (getnamecallmethod() == 'Kick' and error('boob') or old(self,...))
+end)
+setreadonly(mt, true)
+print("Anti Cheat By ChitogeKazuto")
+
 -- Mochi Hub - VoxlBlade
 local MochiLibrary = loadstring(game:HttpGet("https://raw.githubusercontent.com/ChitogeKazuto/Scripts/main/Ui%20Venyx.lua"))()
 local Mochi = MochiLibrary.new("Mochi Hub - VoxlBlade", 0)
